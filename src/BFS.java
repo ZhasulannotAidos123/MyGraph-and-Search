@@ -8,17 +8,19 @@ public class BFS<Vertex> extends Search<Vertex>{
         bfs(graph, source);
     }
 
-    private void bfs(MyGraph<Vertex> graph, Vertex current) {
-        marked.add(current);
-        Queue<Vertex> queue = new LinkedList<>();
-        queue.add(current);
-        while (!queue.isEmpty()) {
-            Vertex v = queue.remove();
+    private void bfs(MyGraph<Vertex> graph, Vertex curr) {
+        marked.add(curr);
+        Queue<Vertex> queu = new LinkedList<>();
+        queu.add(curr);
+
+
+        while (!queu.isEmpty()) {
+            Vertex v = queu.remove();
             for (Vertex vertex : graph.adjacencyList(v)) {
                 if (!marked.contains(vertex)) {
                     marked.add(vertex);
                     edgeTo.put(vertex, v);
-                    queue.add(vertex);
+                    queu.add(vertex);
                 }
             }
         }

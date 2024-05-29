@@ -35,9 +35,9 @@ public class DijkstraSearch<Vertex> extends Search<Vertex> {
         }
     }
 
-    private Vertex getVertexWithMinimumWeight(Set<Vertex> vertices) {
+    private Vertex getVertexWithMinimumWeight(Set<Vertex> vertexes) {
         Vertex minimum = null;
-        for (Vertex vertex : vertices) {
+        for (Vertex vertex : vertexes) {
             if (minimum == null || getShortestDistance(vertex) < getShortestDistance(minimum)) {
                 minimum = vertex;
             }
@@ -45,8 +45,8 @@ public class DijkstraSearch<Vertex> extends Search<Vertex> {
         return minimum;
     }
 
-    private double getShortestDistance(Vertex destination) {
-        return distances.getOrDefault(destination, Double.MAX_VALUE);
+    private double getShortestDistance(Vertex direction) {
+        return distances.getOrDefault(direction, Double.MAX_VALUE);
     }
 }
 

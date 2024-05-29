@@ -11,15 +11,15 @@ abstract class Search<Vertex> {
         edgeTo = new HashMap<>();
     }
 
-    public boolean hasPathTo(Vertex v) {
-        return marked.contains(v);
+    public boolean hasPathTo(Vertex vertex) {
+        return marked.contains(vertex);
     }
 
-    public Iterable<Vertex> pathTo(Vertex v) {
-        if (!hasPathTo(v)) return null;
+    public Iterable<Vertex> pathTo(Vertex vertex) {
+        if (!hasPathTo(vertex)) return null;
 
         LinkedList<Vertex> path = new LinkedList<>();
-        for (Vertex i = v; i != source; i = edgeTo.get(i)) {
+        for (Vertex i = vertex; i != source; i = edgeTo.get(i)) {
             path.push(i);
         }
         path.push(source);

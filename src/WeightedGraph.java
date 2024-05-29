@@ -18,23 +18,24 @@ public class WeightedGraph<Vertex> {
         }
     }
 
-    public void addEdge(Vertex source, Vertex destination, double weight) {
-        if (!adjacencyMap.containsKey(source)) {
-            addVertex(source);
+    public void addEdge(Vertex source, Vertex destination, double wight) {
+
+        if (source.equals(destination) || hasEdge(source, destination)) {
+            return;
         }
         if (!adjacencyMap.containsKey(destination)) {
             addVertex(destination);
         }
-        if (source.equals(destination) || hasEdge(source, destination)) {
-            return;
+        if (!adjacencyMap.containsKey(source)) {
+            addVertex(source);
         }
-        adjacencyMap.get(source).add(new AdjacentVertex<>(destination, weight));
+        adjacencyMap.get(source).add(new AdjacentVertex<>(destination, wight));
         if (undirected) {
-            adjacencyMap.get(destination).add(new AdjacentVertex<>(source, weight));
+            adjacencyMap.get(destination).add(new AdjacentVertex<>(source, wight));
         }
     }
 
-    public int getVertexCount() {
+    public int Count() {
         return adjacencyMap.size();
     }
 
@@ -57,8 +58,8 @@ public class WeightedGraph<Vertex> {
         if (!hasVertex(source)) {
             return false;
         }
-        for (AdjacentVertex<Vertex> adj : adjacencyMap.get(source)) {
-            if (adj.getVertex().equals(destination)) {
+        for (AdjacentVertex<Vertex> adjective : adjacencyMap.get(source)) {
+            if (adjective.getVertex().equals(destination)) {
                 return true;
             }
         }
@@ -70,8 +71,8 @@ public class WeightedGraph<Vertex> {
             return Collections.emptyList();
         }
         List<Vertex> adjacentVertices = new LinkedList<>();
-        for (AdjacentVertex<Vertex> adj : adjacencyMap.get(vertex)) {
-            adjacentVertices.add(adj.getVertex());
+        for (AdjacentVertex<Vertex> adjective : adjacencyMap.get(vertex)) {
+            adjacentVertices.add(adjective.getVertex());
         }
         return adjacentVertices;
     }

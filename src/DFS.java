@@ -6,14 +6,14 @@ public class DFS<Vertex> extends Search<Vertex> {
         dfs(graph, source, new HashSet<>());
     }
 
-    private void dfs(MyGraph<Vertex> graph, Vertex current, Set<Vertex> visited) {
-        visited.add(current);
-        marked.add(current);
+    private void dfs(MyGraph<Vertex> graph, Vertex curr, Set<Vertex> visited) {
+        visited.add(curr);
+        marked.add(curr);
 
-        for (Vertex v : graph.adjacencyList(current)) {
-            if (!visited.contains(v)) {
-                edgeTo.put(v, current);
-                dfs(graph, v, visited);
+        for (Vertex vertec : graph.adjacencyList(curr)) {
+            if (!visited.contains(vertec)) {
+                edgeTo.put(vertec, curr);
+                dfs(graph, vertec, visited);
             }
         }
     }
